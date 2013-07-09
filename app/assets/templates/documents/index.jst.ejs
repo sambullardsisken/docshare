@@ -1,0 +1,11 @@
+<ul>
+  <% documents.each(function(document) { %>
+    <li>
+      <a href="#/documents/<%=document.id%>"><%=document.escape('title')%></a>
+      <br>
+      <%=document.escape('body')%>
+    </li>
+  <% }); %>
+</ul>
+
+<a href="#documents/new">Create Document</a>

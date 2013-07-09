@@ -8,4 +8,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
+  has_many :created_documents, class_name: "Document", foreign_key: :creator_id
+  has_many :document_shares
+  has_many :documents_shared_with, through: :document_shares, source: :document
 end
