@@ -1,8 +1,21 @@
 <div class="doc_page">
-<h4 id="title<%=document.id%>"          contenteditable="true"><%=document.escape('title')%></h4>
+<textarea id="title<%=document.id%>"><%=document.escape('title')%></textarea>
 <br>
 
-<div clas="body" id="body<%=document.id%>" contenteditable="true"><%=document.escape('body')%></div>
+
+
+
+<script type="text/javascript">
+$("#title<%=document.id%>").wysihtml5();
+
+</script>
+
+<textarea class="body" id="body<%=document.id%>"><%=document.escape('body')%></textarea>
+
+<script type="text/javascript">
+$("#body<%=document.id%>").wysihtml5();
+</script>
+
 </div>
 <br>
 <button data-id="<%=document.id%>">Submit Changes</button>
