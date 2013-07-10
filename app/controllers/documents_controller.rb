@@ -3,7 +3,7 @@ class DocumentsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @documents = current_user.created_documents
+    @documents = current_user.accessible_docs
     respond_with(@documents)
   end
 

@@ -1,8 +1,60 @@
-<h4 id="title<%=document.id%>" contenteditable="true"><%=document.escape('title')%></h4>
+<div class="doc_page">
+<h4 id="title<%=document.id%>"          contenteditable="true"><%=document.escape('title')%></h4>
 <br>
-<div id="body<%=document.id%>" contenteditable="true"><%=document.escape('body')%></div>
+
+<div clas="body" id="body<%=document.id%>" contenteditable="true"><%=document.escape('body')%></div>
+</div>
 <br>
 <button data-id="<%=document.id%>">Submit Changes</button>
 <br>
+
+<input type="text" data-provide="typeahead" class="typeahead" autocomplete="off" id="user-input">
+<input type="hidden" name="userId" id="userId" value="">
+<input type="submit" class="submit_share" data-id="<%=document.id%>" value="share">
+<br>
 <br>
 <a href="#">Documents Index</a>
+
+<script type=text/javascript>
+$(function() {
+  var users = {};
+  var userEmails = [];
+  $(".typeahead").typeahead({
+    source: function(query, process) {
+      $.ajax({
+        url: "/users.json",
+        type: "get",
+        success: function(data) {
+          users = {};
+          userEmails = [];
+          data.forEach(function(item) {
+            userEmails.push(item.email);
+            users[item.email] = item.id;
+          });
+          process(userEmails)
+        }
+      });
+
+    },
+    updater: function(item) {
+      $("#userId").val(users[item]);
+      console.log(users[item])
+      return item;
+    }
+  });
+  $(".submit_share").on("click", function(event) {
+    var docId = parseInt($(this).attr("data-id"))
+    var userId = $("#userId").val()
+    console.log(userId)
+    console.log(docId)
+    $.ajax({
+      url: "/document_shares.json",
+      type: "post",
+      data: {document_share: {document_id: docId, user_id: userId}},
+      success: function(data) {
+        console.log(data)
+      }
+    });
+  });
+});
+</script>

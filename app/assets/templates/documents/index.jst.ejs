@@ -4,14 +4,18 @@
   <%return fullTime.slice(0, -6) %>
   <%}%>
 
-<ul>
-  <% documents.each(function(document) { %>
-    <li>
-      <a href="#/documents/<%=document.id%>"><%=document.escape('title')%></a>
-      <br>
-      Last edited: <%=getTimeStamp(new Date(document.escape('updated_at')))%>
-    </li>
-  <% }); %>
-</ul>
+  <h4>Your Documents</h4>
+
+  <ul>
+    <% documents.each(function(document) { %>
+      <li>
+        <a href="#/documents/<%=document.id%>"><%=document.escape('title')%></a>
+        <br>
+        Last edited: <%=getTimeStamp(new Date(document.escape('updated_at')))%>
+      </li>
+    <% }); %>
+  </ul>
+
+
 
 <a href="#documents/new">Create Document</a>
