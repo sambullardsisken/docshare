@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130709200953) do
+ActiveRecord::Schema.define(:version => 20130710204142) do
 
   create_table "document_shares", :force => true do |t|
     t.integer  "user_id"
@@ -24,8 +24,9 @@ ActiveRecord::Schema.define(:version => 20130709200953) do
     t.text     "title"
     t.text     "body"
     t.integer  "creator_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "last_editor"
   end
 
   create_table "users", :force => true do |t|

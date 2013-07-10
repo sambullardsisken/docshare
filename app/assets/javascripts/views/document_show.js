@@ -23,12 +23,16 @@ Docshare.Views.DocumentShow = Backbone.View.extend({
   submit: function(event) {
     event.preventDefault();
     id = $(event.currentTarget).attr("data-id")
-    var newTitle = $("#title" + id).text()
-    var newBody = $("#body" + id).text()
+    var newTitle = $("#title" + id).html()
+    var newBody = $("#body" + id).html()
     var docData = {title: newTitle, body: newBody}
     this.model.set(docData)
     if (this.model.isNew()) {
-      this.collection.create(this.model)
+      this.model.save(docData, {success: function() {
+        console.log("usnhift")
+      }
+      });
+
     }
    else {
      this.model.save(docData);

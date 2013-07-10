@@ -16,6 +16,8 @@ class DocumentsController < ApplicationController
     @user = current_user
     @document = Document.find(params[:id])
     @document.update_attributes!(params[:document])
+    @document.last_editor = @user.email
+    @document.save!
     respond_with(@document)
   end
 

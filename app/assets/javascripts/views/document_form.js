@@ -22,6 +22,7 @@ Docshare.Views.DocumentForm = Backbone.View.extend({
     this.model.set(docData)
     if (this.model.isNew()) {
       this.collection.create(this.model)
+      this.collection.sort
     }
    else {
      this.model.save(docData);

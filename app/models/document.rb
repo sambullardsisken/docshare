@@ -4,4 +4,6 @@ class Document < ActiveRecord::Base
   belongs_to :creator, class_name: "User"
   has_many :document_shares
   has_many :sharing_users, through: :document_shares, source: :user
+
+  validates :title, :body, presence: true
 end

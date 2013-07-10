@@ -15,6 +15,9 @@ Docshare.Views.DocumentsIndex = Backbone.View.extend({
   },
 
   render: function() {
+    console.log("logging collection")
+    console.log(this.collection.models)
+
     var content = this.template({
       documents: this.collection
     });
