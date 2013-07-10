@@ -25,6 +25,7 @@ Docshare.Routers.Documents = Backbone.Router.extend({
 
   show: function(id) {
     var doc = Docshare.documents.get(id);
+    console.log(doc)
     var showView = new Docshare.Views.DocumentShow({
       model: doc
     });

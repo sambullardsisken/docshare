@@ -1,9 +1,15 @@
+<% function getTimeStamp(obj) { %>
+  <% var newObj = parseInt(new Date(obj).getTime() / 60000) * 60000 %>
+  <% var fullTime = new Date(newObj).toLocaleString("en-US", {timeZone: "America/Los_Angeles"}) %>
+  <%return fullTime.slice(0, -6) %>
+  <%}%>
+
 <ul>
   <% documents.each(function(document) { %>
     <li>
       <a href="#/documents/<%=document.id%>"><%=document.escape('title')%></a>
       <br>
-      <%=document.escape('body')%>
+      Last edited: <%=getTimeStamp(new Date(document.escape('updated_at')))%>
     </li>
   <% }); %>
 </ul>

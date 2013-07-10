@@ -23,4 +23,7 @@ Docshare.Views.DocumentsIndex = Backbone.View.extend({
 
     return this;
   }
+
+
+
 });
