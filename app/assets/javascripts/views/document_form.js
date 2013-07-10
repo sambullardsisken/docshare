@@ -14,9 +14,11 @@ Docshare.Views.DocumentForm = Backbone.View.extend({
   submit: function(event) {
     event.preventDefault();
     id = $(event.currentTarget).attr("data-id")
-    var newTitle = $(".title").text()
-    var newBody = $(".body").text()
+    var newTitle = $(".title").val()
+    console.log(newTitle)
+    var newBody = $(".body").val()
     var docData = {title: newTitle, body: newBody}
+    console.log(docData)
     this.model.set(docData)
     if (this.model.isNew()) {
       this.collection.create(this.model)

@@ -13,6 +13,7 @@ class DocumentsController < ApplicationController
   end
 
   def update
+    @user = current_user
     @document = Document.find(params[:id])
     @document.update_attributes!(params[:document])
     respond_with(@document)
