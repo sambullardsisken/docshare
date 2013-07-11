@@ -4,13 +4,13 @@ class DocumentsController < ApplicationController
 
   def index
     @documents = current_user.accessible_docs
-    respond_with(@documents.to_json(:include => :sharing_users))
+    respond_with(@documents.to_json(:include => [:creator, :sharing_users]))
   end
 
   def show
     @document = Document.find(params[:id])
     respond_to do |format|
-      format.json { render :json => @document.to_json(:include => :sharing_users)}
+      format.json { render :json => @document.to_json(:include => [:creator, :sharing_users])}
     end
 
   end

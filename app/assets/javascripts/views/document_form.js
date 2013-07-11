@@ -15,10 +15,8 @@ Docshare.Views.DocumentForm = Backbone.View.extend({
     event.preventDefault();
     id = $(event.currentTarget).attr("data-id")
     var newTitle = $(".title").val()
-    console.log(newTitle)
     var newBody = $(".body").val()
     var docData = {title: newTitle, body: newBody}
-    console.log(docData)
     this.model.set(docData)
     if (this.model.isNew()) {
       this.collection.create(this.model)

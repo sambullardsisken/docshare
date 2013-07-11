@@ -27,6 +27,7 @@ gem 'bootstrap-sass'
 gem 'jquery-ui-rails'
 gem 'rails3-jquery-autocomplete'
 gem "bootstrap-wysihtml5-rails", "~> 0.3.1.20"
+gem 'codemirror-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

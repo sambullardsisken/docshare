@@ -15,9 +15,7 @@ Docshare.Views.DocumentsIndex = Backbone.View.extend({
   },
 
   render: function() {
-    console.log("logging collection")
-    console.log(this.collection.models)
-
+    console.log("rendering")
     var content = this.template({
       documents: this.collection
     });
@@ -25,6 +23,10 @@ Docshare.Views.DocumentsIndex = Backbone.View.extend({
     this.$el.html(content);
 
     return this;
+  },
+
+  setUpTextBox: function() {
+
   }
 
 

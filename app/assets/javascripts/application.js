@@ -19,6 +19,10 @@
 //= require underscore
 //= require backbone
 //= require docshare
+
+//= require codemirror
+//= require firepad
+//= require firepad-min
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

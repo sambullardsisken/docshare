@@ -5,13 +5,17 @@
   <%return fullTime.slice(0, -6) %>
   <%}%>
 
-  <h4>Your Documents</h4>
+  <a href="#"><h4>Your Documents</h4></a>
 
   <ul>
     <% documents.each(function(document) { %>
 
       <li>
         <a href="#/documents/<%=document.id%>"><%=document.escape('title')%></a>
+        <br>
+        <%document.get('creator').each(function(c) {%>
+         Created by <%=c.escape('email')%>
+        <%})%>
         <br>
 Last edited <%=getTimeStamp(new Date(document.escape('updated_at')))%> by
     <%=document.escape('last_editor')%>
@@ -23,3 +27,10 @@ Last edited <%=getTimeStamp(new Date(document.escape('updated_at')))%> by
 
 
 <a href="#documents/new">Create Document</a>
+
+
+
+
+
+
+

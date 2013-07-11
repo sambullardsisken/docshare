@@ -1,3 +1,26 @@
+<% function getTimeStamp(obj) { %>
+  <% var newObj = parseInt(new Date(obj).getTime() / 60000) * 60000 %>
+  <% var fullTime = new Date(newObj).toLocaleString("en-US", {timeZone:
+    "America/Los_Angeles"}) %>
+  <%return fullTime.slice(0, -6) %>
+  <%}%>
+
+<div class="header">
+  <%document.get('creator').each(function(c) {%>
+   Created by <%=c.escape('email')%>
+  <%})%>
+  <br>
+Last edited <%=getTimeStamp(new Date(document.escape('updated_at')))%> by
+<%=document.escape('last_editor')%>
+<br>
+Shared With: <div class="users_list">
+  <%document.get('sharing_users').each(function(user) {%>
+    <%=user.get('email')%>
+  <%})%>
+</div>
+
+</div>
+
 <div class="doc_page">
 <textarea id="title<%=document.id%>"><%=document.escape('title')%></textarea>
 <br>
@@ -17,11 +40,7 @@ $("#body<%=document.id%>").wysihtml5();
 </script>
 </div>
 <br>
-Shared With: <div class="users_list">
-  <%document.get('sharing_users').each(function(user) {%>
-    <%=user.get('email')%>
-  <%})%>
-</div>
+
 <br>
 <button data-id="<%=document.id%>">Submit Changes</button>
 <br>
@@ -57,21 +76,18 @@ $(function() {
     },
     updater: function(item) {
       $("#userId").val(users[item]);
-      console.log(users[item])
       return item;
     }
   });
   $(".submit_share").on("click", function(event) {
     var docId = parseInt($(this).attr("data-id"))
     var userId = $("#userId").val()
-    console.log(userId)
-    console.log(docId)
     $.ajax({
       url: "/document_shares.json",
       type: "post",
       data: {document_share: {document_id: docId, user_id: userId}},
       success: function(data) {
-        console.log(data)
+        console.log("created")
       }
     });
   });

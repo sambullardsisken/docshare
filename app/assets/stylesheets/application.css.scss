@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require bootstrap-wysihtml5
+ *= require codemirror
  *= require_self
  *= require_tree .
  */
@@ -35,3 +36,13 @@
   width: 90%;
   height: 800px;
 }
+
+#firepad {
+     width: 700px;
+     height: 450px;
+     border: solid 1px; /* dark orange background */
+   }
+
+//.CodeMirror {
+//    border: solid 1px;
+//  }
