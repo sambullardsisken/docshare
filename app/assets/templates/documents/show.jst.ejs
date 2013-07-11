@@ -15,7 +15,12 @@ $("#title<%=document.id%>").wysihtml5();
 <script type="text/javascript">
 $("#body<%=document.id%>").wysihtml5();
 </script>
-
+</div>
+<br>
+Shared With: <div class="users_list">
+  <%document.get('sharing_users').each(function(user) {%>
+    <%=user.get('email')%>
+  <%})%>
 </div>
 <br>
 <button data-id="<%=document.id%>">Submit Changes</button>
