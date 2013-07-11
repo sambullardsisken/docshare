@@ -12,6 +12,8 @@ Docshare.Views.DocumentShow = Backbone.View.extend({
   },
 
   render: function() {
+    console.log("inside render")
+    console.log(this.model)
     var content = this.template({
       document: this.model
     });
@@ -26,19 +28,20 @@ Docshare.Views.DocumentShow = Backbone.View.extend({
     var newTitle = $("#title" + id).val()
     var newBody = $("#body" + id).val()
     var docData = {title: newTitle, body: newBody}
+    console.log(docData)
     this.model.set(docData)
-    console.log("this.model")
-    console.log(this.model)
-    if (this.model.isNew()) {
-      this.collection.create(this.model, {success: function() {
-        console.log("usnhift")
+    console.log("after set")
+    $.ajax({
+      url: "/documents/" + id + ".json",
+      type: "put",
+      data: {document: docData},
+      success: function(newDocData) {
+        console.log( newDocData)
       }
-      });
-
-    }
-   else {
-     this.model.save(docData);
-   }
-   this.render
+    })
+    // this.model.save(docData);
+    console.log("after save")
+    console.log(this.model)
+    this.render
   }
 });

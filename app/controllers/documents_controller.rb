@@ -3,7 +3,12 @@ class DocumentsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @documents = current_user.accessible_docs
+    @documents = current_user.created_documents
+    respond_with(@documents.to_json(:include => [:creator, :sharing_users]))
+  end
+
+  def shared
+    @documents = current_user.documents_shared_with
     respond_with(@documents.to_json(:include => [:creator, :sharing_users]))
   end
 

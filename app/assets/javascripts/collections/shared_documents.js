@@ -1,6 +1,6 @@
-Docshare.Collections.Documents = Backbone.Collection.extend({
+Docshare.Collections.SharedDocuments = Backbone.Collection.extend({
   model: Docshare.Models.Document,
-  url: "/documents",
+  url: "documents/shared",
   comparator: function(document) {
     return -Number(new Date(document.get("updated_at")))
   }

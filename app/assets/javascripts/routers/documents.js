@@ -5,8 +5,23 @@ Docshare.Routers.Documents = Backbone.Router.extend({
 
   routes: {
     "": "index",
+    "documents/shared": "showShared",
     "documents/new": "new",
     "documents/:id": "show",
+  },
+
+  showShared: function() {
+    var that = this;
+
+    Docshare.shared_documents.fetch({
+      success: function() {
+        var sharedView = new Docshare.Views.SharedDocuments({
+          collection: Docshare.shared_documents
+        });
+
+        that._swapView(sharedView);
+      }
+    });
   },
 
   index: function() {
@@ -24,9 +39,8 @@ Docshare.Routers.Documents = Backbone.Router.extend({
   },
 
   show: function(id) {
-    var doc = Docshare.documents.get(id);
-    console.log("sharing users")
-    console.log(doc.get('sharing_users'))
+    console.log(id)
+    var doc = Docshare.documents.get(id) || Docshare.shared_documents.get(id)
     var showView = new Docshare.Views.DocumentShow({
       model: doc,
       collection: Docshare.documents

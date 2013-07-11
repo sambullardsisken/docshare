@@ -1,7 +1,6 @@
 <% function getTimeStamp(obj) { %>
   <% var newObj = parseInt(new Date(obj).getTime() / 60000) * 60000 %>
-  <% var fullTime = new Date(newObj).toLocaleString("en-US", {timeZone:
-    "America/Los_Angeles"}) %>
+  <% var fullTime = new Date(newObj).toLocaleString("en-US", {timeZone: "America/Los_Angeles"}) %>
   <%return fullTime.slice(0, -6) %>
   <%}%>
 
@@ -13,11 +12,14 @@
 Last edited <%=getTimeStamp(new Date(document.escape('updated_at')))%> by
 <%=document.escape('last_editor')%>
 <br>
-Shared With: <div class="users_list">
-  <%document.get('sharing_users').each(function(user) {%>
-    <%=user.get('email')%>
+<%if (document.get('sharing_users').length > 0) {%>
+  Shared With: <div class="users_list">
+    <%document.get('sharing_users').each(function(user) {%>
+      <%=user.get('email')%>
   <%})%>
-</div>
+  </div>
+<%}%>
+
 
 </div>
 
