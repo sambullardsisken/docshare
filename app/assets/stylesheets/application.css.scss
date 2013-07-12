@@ -41,7 +41,20 @@
      width: 700px;
      height: 450px;
      border: solid 1px; /* dark orange background */
-   }
+}
+
+.yours {
+  float: left;
+}
+
+.shared {
+  float: left;
+  margin-left: 20px;
+}
+
+.selected {
+  color: #000000;
+}
 
 //.CodeMirror {
 //    border: solid 1px;

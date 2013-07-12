@@ -4,13 +4,14 @@
     "America/Los_Angeles"}) %>
   <%return fullTime.slice(0, -6) %>
   <%}%>
-
-  <h4><a href="#">Your Documents</a>
-  <a href="#/documents/shared">Shared with you</a></h4>
-
+  <div style="clear: both">
+  <a href="#" class="toggle" class="your_docs" ><h5 class="selected" style="float: left">Your Documents</h5></a>
+  <a href="#/documents/shared" class="toggle" class="shared_docs"><h5 style="float: left" class="shared">Shared with you</h5></a>
+  </div>
+  <hr />
+  <br>
   <ul>
     <% documents.each(function(document) { %>
-
       <li>
         <a href="#/documents/<%=document.id%>"><%=document.escape('title')%></a>
         <br>
@@ -29,6 +30,20 @@ Last edited <%=getTimeStamp(new Date(document.escape('updated_at')))%> by
 
 <a href="#documents/new">Create Document</a>
 
+<script type="text/javascript">
+$(function() {
+  $(".toggle").on("click", function() {
+    console.log($(this).find('h5').hasClass('selected'))
+    var that = this
+    if ($(this).find('h5').hasClass('selected')) {
+      $(this).find('h5').removeClass('selected')
+    }
+    else {
+      $(this).find('h5').addClass('selected')
+    }
+  });
+});
+</script>
 
 
 
