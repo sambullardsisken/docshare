@@ -1,4 +1,5 @@
 Docshare::Application.routes.draw do
+  root :to => "documents#index"
   devise_for :users
   resources :documents, :only => [:index, :show, :update, :create] do
     collection do
@@ -8,5 +9,5 @@ Docshare::Application.routes.draw do
   resources :users, :only => [:index]
   resources :document_shares, :only => [:create]
 
-  root :to => "documents#index"
+
 end
