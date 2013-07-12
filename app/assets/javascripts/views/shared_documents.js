@@ -12,14 +12,13 @@ Docshare.Views.SharedDocuments = Backbone.View.extend({
   },
 
   render: function() {
-    console.log("rendering shared docs");
-    console.log(this.collection)
     var content = this.template({
       documents: this.collection
     });
 
     this.$el.html(content);
-
+    this.$el.find('h5').removeClass('selected')
+    console.log(this.$el.find('.links a:nth-child(2)').addClass('selected'))
     return this;
   }
 })

@@ -4,8 +4,8 @@
     "America/Los_Angeles"}) %>
   <%return fullTime.slice(0, -6) %>
   <%}%>
-  <div style="clear: both">
-  <a href="#" class="toggle" class="your_docs" ><h5 class="selected" style="float: left">Your Documents</h5></a>
+  <div style="clear: both" class="links">
+  <a href="#" class="toggle your_docs" ><h5 class="selected" style="float: left">Your Documents</h5></a>
   <a href="#/documents/shared" class="toggle" class="shared_docs"><h5 style="float: left" class="shared">Shared with you</h5></a>
   </div>
   <hr />
@@ -32,16 +32,13 @@ Last edited <%=getTimeStamp(new Date(document.escape('updated_at')))%> by
 
 <script type="text/javascript">
 $(function() {
-  $(".toggle").on("click", function() {
-    console.log($(this).find('h5').hasClass('selected'))
-    var that = this
-    if ($(this).find('h5').hasClass('selected')) {
-      $(this).find('h5').removeClass('selected')
-    }
-    else {
-      $(this).find('h5').addClass('selected')
-    }
-  });
+  // $(".toggle").on("click", function() {
+  //   if ($(this).hasClass("your_docs")) {
+  //     if (!$(this).find('h5').hasClass('selected')) {
+  //       $(this).find('h5').addClass('selected')
+  //     }
+  //   }
+  // });
 });
 </script>
 
