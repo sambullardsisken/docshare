@@ -18,7 +18,7 @@ Docshare.Views.SharedDocuments = Backbone.View.extend({
 
     this.$el.html(content);
     this.$el.find('h5').removeClass('selected')
-    console.log(this.$el.find('.links a:nth-child(2)').addClass('selected'))
+    this.$el.find('.links a:nth-child(2)').addClass('selected')
     return this;
   }
 })
