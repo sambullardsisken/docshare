@@ -20,6 +20,7 @@ Docshare.Routers.Documents = Backbone.Router.extend({
         });
 
         that._swapView(sharedView);
+        toggle = "shared"
       }
     });
   },
@@ -34,6 +35,7 @@ Docshare.Routers.Documents = Backbone.Router.extend({
         });
 
         that._swapView(indexView);
+        toggle = "index";
       }
     });
   },
@@ -46,6 +48,7 @@ Docshare.Routers.Documents = Backbone.Router.extend({
       collection: Docshare.documents
     });
     this._swapView(showView);
+    toggle = "show"
   },
 
   new: function() {
@@ -55,6 +58,7 @@ Docshare.Routers.Documents = Backbone.Router.extend({
       model: newDoc
     });
     this._swapView(formView);
+    toggle = "new"
   },
 
 
