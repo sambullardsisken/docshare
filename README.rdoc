@@ -1,4 +1,4 @@
-This is a simple single-page app I built with Backbone.js, meant for collaborative document editing. You can create documents using a basic text editor (Bootstrap wysihtml5 plug-in). You can also search for other users to share documents with, and edit documents that have been shared with you. The app keeps all your documents in order by last edit and lets you know who has most recently edited each document.
+This is a simple single-page app I built with Backbone.js, meant for collaborative document editing. You can create documents using a basic text editor (Bootstrap wysihtml5 plug-in) and search for other users to share them with. You can edit documents that have been shared with you. The app keeps all your documents in order by last edit and lets you know who has most recently edited each document.
 
 
 
